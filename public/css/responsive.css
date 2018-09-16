@@ -1,0 +1,110 @@
+/*	Media 768Px Start */
+@media (min-width: 768px) and (max-width: 990px) {
+	/* Header */
+	.as-menuwrapper { display: inline-block; float: left; max-width: 65px; }
+	.ec-navigation,.caption-inner-wrap a,.ec-caption { display: none; }
+	.ec-topsection { text-align: center; }
+	.ec-logo,.ec-topsection .ec-right-section { float: none; display: inline-block; }
+	.ec-topsection .ec-right-section { padding: 15px 0px 30px 0px; }
+	.ec-strip-info li { margin: 0px 20px 0px 0px; }
+
+	/* Content */
+	.ec-main-content .col-md-3 { width: 33.333%; display: inline-block; margin: 0px -4px 30px 0px; vertical-align: top; }
+	.ec-main-content .col-md-4 { width: 50%; display: inline-block; margin: 0px -4px 30px 0px; vertical-align: top; }
+	.ec-main-content .col-md-6,.ec-main-content .col-md-12 { float: left; width: 100%; }
+	/* Counter */
+	.ec-counter ul li { width: 25%; float: left; margin-bottom: 30px; }
+	.ec-team-grid figure { height: auto; }
+	.ec-twitter-slider:before { display: none; } .ec-twitter-slider { padding: 10px 0px 40px 0px; }
+	.owl-next,.ec-gallery-slider .owl-next { right: 0px; } .owl-prev,.ec-gallery-slider .owl-prev { left: 0px; }
+	.ec-main-content aside.col-md-3 { width: 100%; } .ec-counter ul li.col-md-3 { width: 25%; }
+
+	/* Footer */
+	.ec-footer-widget .widget { display: inline-block; float: none; margin: 0px -4px 30px 0px; width: 50%; vertical-align: top; }
+	.ec-bottom-section { text-align: center; }
+	.ec-footer-logo { display: inline-block; margin: 30px 0px; }
+	.ec-bottom-section .ec-right-section { float: none; display: inline-block; }
+	.ec-footer-logo { float: none; margin: 0px; }
+	.ec-twitter-slider .owl-prev, .ec-twitter-slider .owl-next { margin-top: 8px; }
+}
+
+/* Media 420Px Start */
+@media (max-width: 767px) {
+	/* Header */
+	.ec-main-navsection { text-align: center; } .ec-logo,.ec-main-navsection .ec-right-section { float: none; display: inline-block; }
+	.ec-logo { margin-bottom: 0px; width: 100%; } .ec-main-navsection .ec-right-section { margin: -20px 0px 30px 0px; }
+	.ec-search { width: 100%; margin-top: 20px; }
+	.ec-signin-box { left: -50%; } .ec-cart-box { right: -74px; width: 310px; text-align: left; }
+
+	.as-menuwrapper { display: inline-block; float: left; max-width: 65px; }
+	.ec-navigation,.ec-caption { display: none; }
+	.ec-topsection { text-align: center; }
+	.ec-logo,.ec-topsection .ec-right-section { float: none; display: inline-block; }
+	.ec-topsection .ec-right-section { padding: 15px 0px 30px 0px; }
+	.ec-top-strip { text-align: center; } .ec-strip-info li,.ec-login-section { float: none; display: inline-block; }
+	.ec-login-section { margin: 15px 0px -5px 0px; } .ec-strip-info li { margin: 0px 15px; }
+	.ec-search-popup { width: 220px; right: -100%; }
+	.modal-dialog,.ec-login-social-media li { width: 100%; }
+	/* Banner */
+	.caption-inner-wrap { display: none; }
+	/* Counter */
+	.ec-counter ul li { width: 50%; float: left; margin-bottom: 30px; }
+	.ec-team-grid figure { height: auto; }
+	.ec-twitter-slider:before,.twiiter-icon:after,.owl-controls { display: none; } .ec-twitter-slider { padding: 0px 0px 20px 0px; }
+	/* Blog */
+	.ec-blog-medium figure { width: 100%; }
+	.ec-blog-medium figure ~ .ec-blog-text { padding: 20px; float: left; width: 100%; }
+	.ec-fixture-list ul li .ec-cell,.ec-latest-result ul li { float: left; width: 100%; }
+	.ec-parallex-info,.ec-promobox figcaption { width: 100%; }
+	.ec-minheader { height: auto; padding-bottom: 40px; }
+	.ec-fixture-detail .ec-authore-post figure { width: 100%; }
+	.ec-fixture-detail .ec-authore-post figure ~ .ec-authore-info { padding: 0px; float: left; width: 100%; }
+	.ec-authore-post figure ~ .ec-authore-info { padding-left: 0px; width: 100%; float: left; }
+	.ec-plyer-information figure { width: 100%; }
+	.ec-plyer-designation { width: 100%; }
+
+	/* Content */
+	.ec-main-content .col-md-3 { width: 50%; display: inline-block; margin: 0px 0px 30px -4px; vertical-align: top; }
+	.ec-main-content .col-md-4 { width: 50%; display: inline-block; margin: 0px 0px 30px -4px; vertical-align: top; }
+	.ec-main-content .col-md-6,.ec-main-content .col-md-12 { float: left; width: 100%; }
+
+	/* Footer */
+	.ec-footer-widget .widget { display: inline-block; float: none; margin: 0px -4px 30px 0px; width: 50%; vertical-align: top; }
+	.ec-bottom-section { text-align: center; }
+	.ec-footer-logo { display: inline-block; margin: 30px 0px; }
+	.ec-bottom-section .ec-right-section { float: none; display: inline-block; }
+	.ec-footer-widget .row { margin: 0px -15px; }
+	.ec-footer-widget [class*="col-md-"] { padding: 0px 15px; }
+	.ec-footer-logo { float: none; margin: 0px; }
+}
+
+/* Media 300Px Start */
+@media (max-width: 480px) {
+	/* Header */
+	.ec-main-navsection { text-align: center; } .ec-logo,.ec-main-navsection .ec-right-section { float: none; display: inline-block; }
+	.ec-logo { margin-bottom: 0px; } .ec-main-navsection .ec-right-section { margin: -20px 0px 30px 0px; }
+	.ec-search { width: 100%; margin-top: 20px; }
+	.ec-signin-box { left: -50%; } .ec-cart-box { right: -74px; width: 310px; text-align: left; }
+	/* Counter */
+	.ec-counter ul li { width: 100%; float: left; margin-bottom: 30px; }
+	.ec-team-matches li { width: 100%; float: left; }
+	.ec-promobox figcaption p,.ec-promobox figcaption a { display: none; }
+	.ec-social-network ul li { margin-right: 5px; }
+	.ec-form form p { width: 100%; }
+	#eccomments ul li figure ~ .text { margin-left: 0px; float: left; width: 100%; }
+	.ec-404page .widget_search { width: 100%; }
+	.ec-event .calendar-date, .ec-event .match-result { width: 100%; }
+	.ec-event article .text { width: 100%; } .ec-fixture-flag { width: 100%; }
+	.ec-fixture-list ul li .ec-cell { text-align: center; } .ec-fixture-vs { margin: 30px 18px; }
+
+	/* Content */
+	.ec-main-content .col-md-3,.ec-main-content .col-md-4 { width: 100%; margin-left: 0px; }
+
+	/* Footer */
+	.ec-footer-widget .widget { display: inline-block; float: none; margin: 0px 0px 30px 0px; width: 100%; vertical-align: top; }
+}
+
+/* Media 940Px Start */
+@media screen and (min-width: 991px) and (max-width: 1054px) {
+	.main-navigation > ul > li > a { padding: 15px 18px; }
+}

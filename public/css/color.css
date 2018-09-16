@@ -1,0 +1,25 @@
+/* ThemeColor */
+.ec-color,.ec-colorhover:hover,/* Navigation */.main-navigation > ul > li:hover > a,.main-navigation > ul > li.active > a,.main-navigation .as-dropdown > li:hover > a/* Navigation */,
+.ec-blog-medium ul li:hover .ec-blog-text h2 a,.ec-blog-grid ul li:hover .ec-blog-text h2 a,.ec-shop-list ul li:hover .ec-shopinfo h2 a,.ec-recentnews_widget ul li:hover section h6 a,
+.widget_categories ul li:hover,.widget_categories ul li:hover a,.widget_categories ul li:hover a:before,.ec-simple-service ul li:hover h2,.ec-simple-service ul li:hover i,
+.widget_search form label:before,.ec-fixture-option li a:hover,.ec-modren-gallery ul li:hover h2,.ec-navigation > ul > li:hover > a,.ec-navigation > ul > li.active > a {
+	color: #e95842;
+}
+
+.ec-bgcolor,.ec-bgcolorhover:hover,.ec-social-network ul li:hover a,.ec-lang-section ul ul li:hover,.flex-direction-nav a:hover,.owl-prev:hover,.owl-next:hover,
+.ec-skillst .count-bar,.ec-skillst .count-bar:before,.ec-blog-grid ul li:hover .ec-grid-time a,.flex-control-paging li a.flex-active,.ec-simple-gallery figcaption:before,
+.ec-shop-list figure figcaption ul li a,.ec-pagination li:hover a,.ec-pagination li.active a,.ec-tags a:hover,.nav-tabs > li.active > a,.ec-navigation ul > li > a:before,
+.ec-navigation > ul .as-dropdown > li:hover > a,.ec-user-section > li > a:hover,.ec-modallogin-form input[type="submit"],.ec-event.ec-event-listing .text h2 span {
+	background-color: #e95842;
+}
+
+.ec-bordercolor,.ec-bordercolorhover:hover,.caption-inner-wrap p {
+	border-color: #e95842;
+}
+
+.ec-featured-star:before {
+	border-top: 14px solid #e95842;
+}
+.ec-featured-star:after {
+	border-top: 14px solid #e95842;
+}

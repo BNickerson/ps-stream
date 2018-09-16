@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Video</title>
+    <!-- Css Files -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link href="css/color.css" rel="stylesheet">
+    <link href="css/dl-menu.css" rel="stylesheet">
+    <link href="css/flexslider.css" rel="stylesheet">
+    <link href="css/prettyphoto.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!--// Main Wrapper \\-->
+    <div class="ec-main-wrapper">
+        <div class="ec-loading-section"><div class="ball-scale-multiple"><div></div><div></div><div></div></div></div>
+        <!--// Main Header \\-->
+        <header id="ec-header">
+            <!--// TopSection \\-->
+            <div class="ec-top-strip">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="ec-strip-info">
+                                <li><i class="fa fa-info"></i> This is a test stream, and if anything goes wrong, I will send an update at the bottom of your screen. </li>
+                            </ul>
+                            <!-- <div class="ec-login-section">
+                                <a href="#" class="ec-login-section-btn ec-bgcolor" disabled="true"><i class="fa fa-user"></i> Login</a>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--// TopSection \\-->
+            <!--// Main Header \\-->
+            <div class="ec-main-navsection">
+                <div class="container">
+                    <a href="#" class="ec-logo"><img src="images/logo.png" alt=""></a>
+                    <div class="ec-right-section">
+                        <nav class="ec-navigation">
+                            <ul>
+                                <li><a href="https://www.paypal.me/bnickerson">Donate</a></li>
+                            </ul>
+                        </nav>
+                        <!--// Responsive Menu //-->
+                        <div id="as-menu" class="as-menuwrapper">
+                            <button class="as-trigger">Open Menu</button>
+                            <ul class="as-menu">
+                                <li><a href="https://www.paypal.me/bnickerson">Donate</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--// Main Header \\-->
+        </header>
+        <!--// Main Header \\-->
+        <!--// Main Content \\-->
+        <div class="ec-main-content">
+            <!--// Main Section \\-->
+            <div class="ec-main-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="ec-fancy-title">
+                                <h2>Kansas City Chiefs vs Pittsburgh Steelers <span id="viewer-count"></span></h2></div>
+                            <div class="ec-map">
+                                <div style="position:relative; padding-bottom:56.25%; overflow:hidden;"><iframe src="https://content.jwplatform.com/players/xx7LjrDI-Pc31EMrI.html" width="100%" height="100%" frameborder="0" scrolling="auto" allowfullscreen style="position:absolute;"></iframe></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--// Main Section \\-->
+        </div>
+        <!--// Main Content \\-->
+        <footer id="ec-footer">
+            <!--// CopyRight Section \\-->
+            <div class="ec-bottom-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <a href="#" class="ec-footer-logo"><img src="images/footer-logo.png" alt=""></a>
+                            <div class="ec-copyright">
+                                <p>© copyright 2018 Powerspike</p>
+                            </div>
+                        </div>
+                        <!-- <div class="col-md-7">
+                            <div class="ec-right-section">
+                                <a href="/" class="backtop-btn">Back to top <i class="fa fa-caret-up"></i></a>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!--// CopyRight Section \\-->
+        </footer>
+    </div>
+    <!--// Main Wrapper \\-->
+    <div id="alert-wrapper">
+        <span id="socket-message"></span>
+    </div>
+    <!-- ModalLogin Box -->
+    <div class="modal fade" id="ModalLogin" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="ec-modallogin-form ec-login-popup">
+                        <span class="ec-color">Login to Your Account</span>
+                        <form>
+                            <ul>
+                                <li>
+                                    <input type="text" value="Your Username" onblur="if(this.value == '') { this.value ='Your Username'; }" onfocus="if(this.value =='Your Username') { this.value = ''; }"> </li>
+                                <li>
+                                    <input type="password" value="password" onblur="if(this.value == '') { this.value ='password'; }" onfocus="if(this.value =='password') { this.value = ''; }"> </li>
+                                <li> <a href="#" class="ec-forgot-btn">Forgot Password?</a> </li>
+                                <li>
+                                    <input type="submit" value="Sign In"> </li>
+                            </ul>
+                        </form>
+                        <span class="ec-color">or try our socials</span>
+                        <ul class="ec-login-social-media">
+                            <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+                            <li class="ec-twitter-color"><a href="#"><i class="fa fa-twitter"></i> twitter</a></li>
+                            <li class="ec-googleplus-color"><a href="#"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+                        </ul>
+                        <p>Not a member yet? <a href="#">Sign-up Now!</a></p>
+                    </div>
+                    <div class="ec-modallogin-form ec-register-popup">
+                        <span class="ec-color">create Your Account today</span>
+                        <form>
+                            <ul>
+                                <li>
+                                    <input type="text" value="Your Username" onblur="if(this.value == '') { this.value ='Your Username'; }" onfocus="if(this.value =='Your Username') { this.value = ''; }"> </li>
+                                <li>
+                                    <input type="text" value="Your E-mail" onblur="if(this.value == '') { this.value ='Your E-mail'; }" onfocus="if(this.value =='Your E-mail') { this.value = ''; }"> </li>
+                                <li>
+                                    <input type="password" value="password" onblur="if(this.value == '') { this.value ='password'; }" onfocus="if(this.value =='password') { this.value = ''; }"> </li>
+                                <li>
+                                    <input type="text" value="Confirm Password" onblur="if(this.value == '') { this.value ='Confirm Password'; }" onfocus="if(this.value =='Confirm Password') { this.value = ''; }"> </li>
+                                <li>
+                                    <input type="submit" value="Create Account"> </li>
+                            </ul>
+                        </form>
+                        <span class="ec-color">or signup with your socials:</span>
+                        <ul class="ec-login-social-media">
+                            <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a></li>
+                            <li class="ec-twitter-color"><a href="#"><i class="fa fa-twitter"></i> twitter</a></li>
+                            <li class="ec-googleplus-color"><a href="#"><i class="fa fa-google-plus-square"></i> Google+</a></li>
+                        </ul>
+                        <p>Already a member? <a href="#">Sign-in Here!</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- ModalLogin Box -->
+    <!-- jQuery (necessary for JavaScript plugins) -->
+    <script src="script/jquery.js"></script>
+    <script src="script/modernizr.js"></script>
+    <script src="script/bootstrap.min.js"></script>
+    <script src="script/jquery.dlmenu.js"></script>
+    <script src="script/flexslider-min.js"></script>
+    <script src="script/jquery.prettyphoto.js"></script>
+    <script src="script/waypoints-min.js"></script>
+    <script src="script/jquery.countdown.min.js"></script>
+    <script src="script/fitvideo.js"></script>
+    <script src="script/skills.js"></script>
+    <script src="script/functions.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="script/socket-handling.js"></script>
+</body>
+</html>
