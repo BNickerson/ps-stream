@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
-const port = 3000;
+const port = 80;
 
 app.use(express.static(__dirname + '/public'));
 console.log(__dirname + '/public');
