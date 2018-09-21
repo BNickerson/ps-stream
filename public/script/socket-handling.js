@@ -14,5 +14,5 @@ socket.on('message', function (message) {
     console.log(message);
     var html = '<div class="message"><span><img src="'+ message.user.avatar + '" /></span><span class="user" style="color:' + message.user.color + '">' + message.user.username + '</span><span class="text">: ' + message.content + '</span></div>';
     $('#discord-chat').append(html);
-    $('#discord-chat').scrollTop($('#discord.chat').height());
+    $('#discord-chat').scrollTop($('#discord.chat')[0].scrollHeight());
 });
