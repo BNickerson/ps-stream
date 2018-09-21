@@ -37,26 +37,30 @@ client.on('ready', () => {
 
 client.on('message', (message) => {
     let role;
-    if(!message.member.roles) return;
-    if(message.member.roles.find(x => x.name == 'Steeler Mods')) {
-        role = message.member.roles.find(x => x.name == 'Steeler Mods').hexColor;
-    } else if (message.member.roles.find(x => x.name == 'Control Crew')) {
-        role = message.member.roles.find(x => x.name == 'Control Crew').hexColor;
-    } else if (message.member.roles.find(x => x.name == 'Yinzers')) {
-        role = message.member.roles.find(x => x.name == 'Yinzers').hexColor;
-    } else {
-        role = '#000';
+    try {
+        if(message.member.roles.find(x => x.name == 'Steeler Mods')) {
+            role = message.member.roles.find(x => x.name == 'Steeler Mods').hexColor;
+        } else if (message.member.roles.find(x => x.name == 'Control Crew')) {
+            role = message.member.roles.find(x => x.name == 'Control Crew').hexColor;
+        } else if (message.member.roles.find(x => x.name == 'Yinzers')) {
+            role = message.member.roles.find(x => x.name == 'Yinzers').hexColor;
+        } else {
+            role = '#000';
+        }
+        let packet = { 
+            content: message.content,
+            user: {
+                username: message.author.username,
+                tag: message.author.tag,
+                color: role,
+                avatar: message.author.displayAvatarURL
+            }   
+        };
+        io.sockets.emit('message', packet);
+    } catch (e) {
+        console.log(e);
     }
-    let packet = { 
-        content: message.content,
-        user: {
-            username: message.author.username,
-            tag: message.author.tag,
-            color: role,
-            avatar: message.author.displayAvatarURL
-        }   
-    };
-    io.sockets.emit('message', packet);
+    
 });
 
 client.login(Config.discord.token);
