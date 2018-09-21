@@ -3606,3 +3606,27 @@ blockquote:after {
 	text-align:center;
 	display:none;
 }
+
+#discord-chat {
+	border:1px solid #e3e3e3;
+	width:100%;
+	height:300px;
+	padding: 25px;
+	overflow-y: scroll;
+}
+
+#discord-chat .message .text {
+	color:#000;
+	line-height:30px;
+}
+#discord-chat .message {
+	padding:5px;
+}
+#discord-chat .message:nth-child(odd) {
+	background-color:#e3e3e3;
+}
+#discord-chat img {
+	height:30px;
+	border-radius: 50%;
+	margin-right: 10px;
+}
