@@ -1,4 +1,5 @@
 {
+    "port": "80",
     "discord": {
         "token" : "MzI2NTcwOTY2MjI4NjY0MzIw.DoSkVQ.gmW1c7rmTniX8BWKe5Hl9RsuJso"
     }
