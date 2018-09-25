@@ -2,18 +2,12 @@ extends layout/main
 
 block content
     .ec-main-section
-        .container
-            .row
-                .col-md-8
-                    .ec-fancy-title
-                        h2
-                            | Kansas City Chiefs vs Pittsburgh Steelers 
-                            span#viewer-count
-                    .ec-map
-                        div(style='position:relative; padding-bottom:56.25%; overflow:hidden;')
-                            iframe(src='https://content.jwplatform.com/players/xx7LjrDI-Pc31EMrI.html', width='100%', height='100%', frameborder='0', scrolling='auto', allowfullscreen='', style='position:absolute;')
-                .col-lg-4
-                    .ec-fancy-title
-                        h2 Discord Live Chat
-                    .ec-map
-                        #discord-chat(style='height:411px;')
+            .container
+                .row
+                    .col-md-12
+                        .ec-fancy-title
+                            h2
+                                | Kansas City Chiefs vs Pittsburgh Steelers 
+                                span#viewer-count
+                        .ec-map
+                            #playerElement(style='width:100%; height:0; padding:0 0 56.25% 0')

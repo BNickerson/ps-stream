@@ -1,172 +1,172 @@
 doctype html
 html(lang='en')
-	head
-		meta(charset='utf-8')
-		meta(http-equiv='X-UA-Compatible', content='IE=edge')
-		meta(name='viewport', content='width=device-width, initial-scale=1')
-		// The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
-		title #{title}
-		// Css Files
-		link(href='css/bootstrap.css', rel='stylesheet')
-		link(href='css/font-awesome.css', rel='stylesheet')
-		link(href='style.css', rel='stylesheet')
-		link(href='css/color.css', rel='stylesheet')
-		link(href='css/dl-menu.css', rel='stylesheet')
-		link(href='css/flexslider.css', rel='stylesheet')
-		link(href='css/prettyphoto.css', rel='stylesheet')
-		link(href='css/responsive.css', rel='stylesheet')
-		// HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
-		// WARNING: Respond.js doesn't work if you view the page via file://
-		//if lt IE 9
-			script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
-			script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
-	body
-		// // Main Wrapper \\
-		.ec-main-wrapper
-			.ec-loading-section
-				.ball-scale-multiple
-					div
-					div
-					div
-			// // Main Header \\
-			header#ec-header
-				// // TopSection \\
-				.ec-top-strip
-					.container
-						.row
-							.col-md-12
-								ul.ec-strip-info
-									li
-										i.fa.fa-info
-										|  This is a test stream, and if anything goes wrong, I will send an update at the bottom of your screen.
-								//
-									<div class="ec-login-section">
-									<a href="#" class="ec-login-section-btn ec-bgcolor" disabled="true"><i class="fa fa-user"></i> Login</a>
-									</div>
-				// // TopSection \\
-				// // Main Header \\
-				.ec-main-navsection
-					.container
-						a.ec-logo(href='#')
-							img(src='images/logo.png', alt='')
-						.ec-right-section
-							nav.ec-navigation
-								ul
-									li
-										a(href='/auth/google') Login
-							// // Responsive Menu //
-							#as-menu.as-menuwrapper
-								button.as-trigger Open Menu
-								ul.as-menu
-									li
-										a(href='/auth/google') Login
-				// // Main Header \\
-				// // Main Header \\
-				// // Main Content \\
-				.ec-main-content
-					// // Main Section \\
-					block content
-					// // Main Section \\
-					// // Main Content \\
-					footer#ec-footer
-						// // CopyRight Section \\
-						.ec-bottom-section
-							.container
-								.row
-									.col-md-5
-										a.ec-footer-logo(href='#')
-											img(src='images/footer-logo.png', alt='')
-										.ec-copyright
-											p © copyright 2018 Powerspike
-									//
-										<div class="col-md-7">
-										<div class="ec-right-section">
-										<a href="/" class="backtop-btn">Back to top <i class="fa fa-caret-up"></i></a>
-										</div>
-										</div>
-						// // CopyRight Section \\
-						// // Main Wrapper \\
-						#alert-wrapper
-							span#socket-message
-						// ModalLogin Box
-						#ModalLogin.modal.fade(tabindex='-1', role='dialog')
-							.modal-dialog(role='document')
-								.modal-content
-									.modal-body
-										.ec-modallogin-form.ec-login-popup
-											span.ec-color Login to Your Account
-											form
-												ul
-													li
-														input(type='text', value='Your Username', onblur="if(this.value == '') { this.value ='Your Username'; }", onfocus="if(this.value =='Your Username') { this.value = ''; }")
-													li
-														input(type='password', value='password', onblur="if(this.value == '') { this.value ='password'; }", onfocus="if(this.value =='password') { this.value = ''; }")
-													li
-														a.ec-forgot-btn(href='#') Forgot Password?
-													li
-														input(type='submit', value='Sign In')
-											span.ec-color or try our socials
-											ul.ec-login-social-media
-												li
-													a(href='#')
-														i.fa.fa-facebook
-														|  Facebook
-												li.ec-twitter-color
-													a(href='#')
-														i.fa.fa-twitter
-														|  twitter
-												li.ec-googleplus-color
-													a(href='#')
-														i.fa.fa-google-plus-square
-														|  Google+
-											p
-												| Not a member yet? 
-												a(href='#') Sign-up Now!
-										.ec-modallogin-form.ec-register-popup
-											span.ec-color create Your Account today
-											form
-												ul
-													li
-														input(type='text', value='Your Username', onblur="if(this.value == '') { this.value ='Your Username'; }", onfocus="if(this.value =='Your Username') { this.value = ''; }")
-													li
-														input(type='text', value='Your E-mail', onblur="if(this.value == '') { this.value ='Your E-mail'; }", onfocus="if(this.value =='Your E-mail') { this.value = ''; }")
-													li
-														input(type='password', value='password', onblur="if(this.value == '') { this.value ='password'; }", onfocus="if(this.value =='password') { this.value = ''; }")
-													li
-														input(type='text', value='Confirm Password', onblur="if(this.value == '') { this.value ='Confirm Password'; }", onfocus="if(this.value =='Confirm Password') { this.value = ''; }")
-													li
-														input(type='submit', value='Create Account')
-											span.ec-color or signup with your socials:
-											ul.ec-login-social-media
-												li
-													a(href='#')
-														i.fa.fa-facebook
-														|  Facebook
-												li.ec-twitter-color
-													a(href='#')
-														i.fa.fa-twitter
-														|  twitter
-												li.ec-googleplus-color
-													a(href='#')
-														i.fa.fa-google-plus-square
-														|  Google+
-											p
-												| Already a member? 
-												a(href='#') Sign-in Here!
-								.clearfix
-						// ModalLogin Box
-						// jQuery (necessary for JavaScript plugins)
-						script(src='script/jquery.js')
-						script(src='script/modernizr.js')
-						script(src='script/bootstrap.min.js')
-						script(src='script/jquery.dlmenu.js')
-						script(src='script/flexslider-min.js')
-						script(src='script/jquery.prettyphoto.js')
-						script(src='script/waypoints-min.js')
-						script(src='script/jquery.countdown.min.js')
-						script(src='script/fitvideo.js')
-						script(src='script/skills.js')
-						script(src='script/functions.js')
-						script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js')
-						script(src='script/socket-handling.js')
-						script(src='script/main.js')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    // The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags
+    title Powerspike.net | Steeler Football
+    // Css Files
+    link(href='css/bootstrap.css', rel='stylesheet')
+    link(href='css/font-awesome.css', rel='stylesheet')
+    link(href='style.css', rel='stylesheet')
+    link(href='css/color.css', rel='stylesheet')
+    link(href='css/dl-menu.css', rel='stylesheet')
+    link(href='css/flexslider.css', rel='stylesheet')
+    link(href='css/prettyphoto.css', rel='stylesheet')
+    link(href='css/responsive.css', rel='stylesheet')
+    // HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+    // WARNING: Respond.js doesn't work if you view the page via file://
+    //if lt IE 9
+      script(src='https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js')
+      script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+  body
+    // // Main Wrapper \\
+    .ec-main-wrapper
+      .ec-loading-section
+        .ball-scale-multiple
+          div
+          div
+          div
+      // // Main Header \\
+      header#ec-header
+        // // TopSection \\
+        .ec-top-strip
+          .container
+            .row
+              .col-md-12
+                ul.ec-strip-info
+                  li
+                    i.fa.fa-info
+                    |  This is a test stream, and if anything goes wrong, I will send an update at the bottom of your screen.
+                //
+                  <div class="ec-login-section">
+                  <a href="#" class="ec-login-section-btn ec-bgcolor" disabled="true"><i class="fa fa-user"></i> Login</a>
+                  </div>
+        // // TopSection \\
+        // // Main Header \\
+        .ec-main-navsection
+          .container
+            a.ec-logo(href='#')
+              img(src='images/logo.png', alt='')
+            .ec-right-section
+              nav.ec-navigation
+                ul
+                  li
+                    a(href='https://www.paypal.me/bnickerson') Donate
+              // // Responsive Menu //
+              #as-menu.as-menuwrapper
+                button.as-trigger Open Menu
+                ul.as-menu
+                  li
+                    a(href='https://www.paypal.me/bnickerson') Donate
+        // // Main Header \\
+        // // Main Header \\
+        // // Main Content \\
+        .ec-main-content
+          block content
+          // // Main Section \\
+          // // Main Content \\
+          footer#ec-footer
+            // // CopyRight Section \\
+            .ec-bottom-section
+              .container
+                .row
+                  .col-md-5
+                    a.ec-footer-logo(href='#')
+                      img(src='images/footer-logo.png', alt='')
+                    .ec-copyright
+                      p © copyright 2018 Powerspike
+                  //
+                    <div class="col-md-7">
+                    <div class="ec-right-section">
+                    <a href="/" class="backtop-btn">Back to top <i class="fa fa-caret-up"></i></a>
+                    </div>
+                    </div>
+            // // CopyRight Section \\
+            // // Main Wrapper \\
+            #alert-wrapper
+              span#socket-message
+            // ModalLogin Box
+            #ModalLogin.modal.fade(tabindex='-1', role='dialog')
+              .modal-dialog(role='document')
+                .modal-content
+                  .modal-body
+                    .ec-modallogin-form.ec-login-popup
+                      span.ec-color Login to Your Account
+                      form
+                        ul
+                          li
+                            input(type='text', value='Your Username', onblur="if(this.value == '') { this.value ='Your Username'; }", onfocus="if(this.value =='Your Username') { this.value = ''; }")
+                          li
+                            input(type='password', value='password', onblur="if(this.value == '') { this.value ='password'; }", onfocus="if(this.value =='password') { this.value = ''; }")
+                          li
+                            a.ec-forgot-btn(href='#') Forgot Password?
+                          li
+                            input(type='submit', value='Sign In')
+                      span.ec-color or try our socials
+                      ul.ec-login-social-media
+                        li
+                          a(href='#')
+                            i.fa.fa-facebook
+                            |  Facebook
+                        li.ec-twitter-color
+                          a(href='#')
+                            i.fa.fa-twitter
+                            |  twitter
+                        li.ec-googleplus-color
+                          a(href='#')
+                            i.fa.fa-google-plus-square
+                            |  Google+
+                      p
+                        | Not a member yet? 
+                        a(href='#') Sign-up Now!
+                    .ec-modallogin-form.ec-register-popup
+                      span.ec-color create Your Account today
+                      form
+                        ul
+                          li
+                            input(type='text', value='Your Username', onblur="if(this.value == '') { this.value ='Your Username'; }", onfocus="if(this.value =='Your Username') { this.value = ''; }")
+                          li
+                            input(type='text', value='Your E-mail', onblur="if(this.value == '') { this.value ='Your E-mail'; }", onfocus="if(this.value =='Your E-mail') { this.value = ''; }")
+                          li
+                            input(type='password', value='password', onblur="if(this.value == '') { this.value ='password'; }", onfocus="if(this.value =='password') { this.value = ''; }")
+                          li
+                            input(type='text', value='Confirm Password', onblur="if(this.value == '') { this.value ='Confirm Password'; }", onfocus="if(this.value =='Confirm Password') { this.value = ''; }")
+                          li
+                            input(type='submit', value='Create Account')
+                      span.ec-color or signup with your socials:
+                      ul.ec-login-social-media
+                        li
+                          a(href='#')
+                            i.fa.fa-facebook
+                            |  Facebook
+                        li.ec-twitter-color
+                          a(href='#')
+                            i.fa.fa-twitter
+                            |  twitter
+                        li.ec-googleplus-color
+                          a(href='#')
+                            i.fa.fa-google-plus-square
+                            |  Google+
+                      p
+                        | Already a member? 
+                        a(href='#') Sign-in Here!
+                .clearfix
+            // ModalLogin Box
+            // jQuery (necessary for JavaScript plugins)
+            script(src='script/jquery.js')
+            script(src='script/modernizr.js')
+            script(src='script/bootstrap.min.js')
+            script(src='script/jquery.dlmenu.js')
+            script(src='script/flexslider-min.js')
+            script(src='script/jquery.prettyphoto.js')
+            script(src='script/waypoints-min.js')
+            script(src='script/jquery.countdown.min.js')
+            script(src='script/fitvideo.js')
+            script(src='script/skills.js')
+            script(src='script/functions.js')
+            script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js')
+            script(src='script/socket-handling.js')
+            script(type='text/javascript', src='//player.wowza.com/player/latest/wowzaplayer.min.js')
+            script(src='script/main.js')

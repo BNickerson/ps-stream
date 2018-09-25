@@ -4,69 +4,6 @@
 @import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700&subset=latin,latin-ext);
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,greek-ext);
 
-/*
-01. Theme Typo
-02. Header
-	02.1 Top Strip
-		02.1.1 Top Info
-		02.1.2 Search
-	02.1 Logo
-	02.2 Navigation
-		02.2.1 SubMenu
-	02.3 Booking Form Toggle
-	02.4 Shoping Cart
-03. Content
-
-	03.1 Blog
-		03.1.1 Blog Grid Simple
-		03.1.2 Blog Grid
-		03.1.3 Blog Medium
-		03.1.4 Blog Detail
-	
-	03.2 Gallery
-		03.4.1 Simple Gallery
-		03.4.2 Video Gallery
-	
-	03.4 Team
-		03.4.1 Team Grid
-		03.4.2 Team Detail
-
-	03.5 Shortcode
-		03.5.1 Accordian
-		03.5.2 Testimonial
-		03.5.3 Services
-		03.5.4 Team
-		03.5.5 Form
-		03.5.6 Counter
-		03.5.7 Partner
-		03.5.8 Twitter
-		03.5.9 Call To Action
- 
-	03.6 Default Pages Style
-		03.6.1 404
-		03.6.2 UnderCuntruction
-		03.6.3 About Us
-		03.6.4 Services
-		03.6.5 Contact Us
-
-	03.7 Shop
-		03.7.1 Shop Listing
-		03.7.2 Shop Detail
- 
-04. Sidebar Widget
-	04.1 Widget CATEGORY WIDGET
-	04.2 Widget Search
-	04.3 Widget Our Photos
-	04.4 Widget Text
-	04.5 Widget Recent Posts
-	04.6 Widget Recent Tweets
-	04.7 Widget Newsletter
- 
-05. Footer
-	05.1 backTo Top
-	05.2 CopyRight
-	05.3 Social Network
-*/
 
 * {
 	margin: 0px;
