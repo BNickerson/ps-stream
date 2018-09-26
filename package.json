@@ -9,6 +9,7 @@
   "author": "Blake",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "discord.js": "^11.4.2",
     "express": "^4.16.3",
     "mongoose": "^5.2.17",

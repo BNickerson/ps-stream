@@ -1,0 +1,14 @@
+extends layout/main
+
+block content
+    .ec-main-section
+            .container
+                .row
+                    .col-md-12
+                        h2
+                            | #{title} 
+                            span#viewer-count
+                        form#submitForm(action=url, method="post")
+                            input(type="text", name="title")
+                            input(type="submit", value="Submit", class="ec-default-button")
+                        script(src='/script/admin.js')
