@@ -56,26 +56,34 @@ app.post('/setup/title', (req, res) => {
 });
 
 let room1 = {
-    source: Config.streams.room1
+    source: Config.streams.room1,
+	count: () => {
+		return io.sockets.adapter.rooms['room1'] ? io.sockets.adapter.rooms['room1'].length : 0;
+	}
 }, room2 = {
-    source: Config.streams.room2
+    source: Config.streams.room2,
+	count: () => {
+		return io.sockets.adapter.rooms['room2'] ? io.sockets.adapter.rooms['room2'].length : 0;
+	}
 };
+let getViewerCount = () => {
+	return room1.count + room2.count;
+}
 io.on('connection', (socket) => {
-    let r1count = io.sockets.adapter.rooms['room1'] ? io.sockets.adapter.rooms['room1'].length : 0;
-    let r2count = io.sockets.adapter.rooms['room2'] ? io.sockets.adapter.rooms['room2'].length : 0;
-    if (r1count <= r2count) {
+    if (room1.count <= room2.count) {
         socket.join('room1');
         socket.emit('source', room1.source);
-        console.log(`joining room 1 with ${r1count}`);
+        console.log(`Room 1: ${room1.count} viewers`);
     } else {
         socket.join('room2');
         socket.emit('source', room2.source);
-        console.log(`joining room 2 with ${r2count}`);
+        console.log(`Room 2: ${room2.count} viewers`);
     }
-    io.sockets.emit('viewers', r1count+r2count+1);
+    io.sockets.emit('viewers', getViewerCount());
     socket.on('send-news', (message) => {
         io.sockets.emit('news', (message));
     });
+	
 });
 
 
