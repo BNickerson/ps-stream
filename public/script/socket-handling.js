@@ -4,6 +4,11 @@ socket.on('news', function (data) {
     $('#alert-wrapper').fadeIn(1500).delay(data.delay ? data.delay : 5000).fadeOut(1500);
 });
 
+socket.on('viewers', function(viewerCount) {
+    console.log(viewerCount);
+    $('#viewerCount').html(viewerCount + ' viewers');
+});
+
 socket.on('source', function(source) {
     console.log(`connecting to ${source}`);
     WowzaPlayer.create('playerElement',
