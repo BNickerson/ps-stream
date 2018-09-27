@@ -83,7 +83,7 @@ io.on('connection', (socket) => {
     socket.on('send-news', (message) => {
         io.sockets.emit('news', (message));
     });
-	socket.on('disconnect' () => {
+	socket.on('disconnect', () => {
 		io.sockets.emit('viewers', getViewerCount());
 	}
 	
