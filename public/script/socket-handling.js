@@ -5,7 +5,6 @@ socket.on('news', function (data) {
 });
 
 socket.on('viewers', function(viewerCount) {
-    console.log(viewerCount);
     $('#viewerCount').html(viewerCount + ' viewers');
 });
 
