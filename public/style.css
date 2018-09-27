@@ -230,7 +230,7 @@ address {font-style: italic;}
 .ec-left-section {
 	float: left;
 }
-.ec-sticky .ec-main-navsection {
+/* .ec-sticky .ec-main-navsection {
 	background: #fff;
 	box-shadow: 0 0 10px #eee;
 	left: 0;
@@ -238,7 +238,7 @@ address {font-style: italic;}
 	top: 0;
 	width: 100%;
 	z-index: 9999;
-}
+} */
 .ec-loading-section {
     position: fixed;
     left: 0px;
@@ -3566,4 +3566,18 @@ blockquote:after {
 	height:30px;
 	border-radius: 50%;
 	margin-right: 10px;
+}
+ul.names {
+	text-align:center;
+}
+ul.names li {
+	display:inline-block;
+	padding: 5px;
+	color:#000;
+}
+.bordered-box {
+	border:1px solid rgb(119, 119, 119);
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	padding: 10px;
 }

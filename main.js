@@ -64,15 +64,13 @@ io.on('connection', (socket) => {
     let r1count = io.sockets.adapter.rooms['room1'] ? io.sockets.adapter.rooms['room1'].length : 0;
     let r2count = io.sockets.adapter.rooms['room2'] ? io.sockets.adapter.rooms['room2'].length : 0;
     if (r1count <= r2count) {
-        room1.count++;
         socket.join('room1');
         socket.emit('source', room1.source);
-        console.log('sharing room 1 source');
+        console.log(`joining room 1 with ${r1count}`);
     } else {
-        room2.count++;
         socket.join('room2');
         socket.emit('source', room2.source);
-        console.log('sharing room 2 source');
+        console.log(`joining room 2 with ${r2count}`);
     }
     socket.on('send-news', (message) => {
         io.sockets.emit('news', (message));
