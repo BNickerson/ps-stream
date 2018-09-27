@@ -57,11 +57,11 @@ app.post('/setup/title', (req, res) => {
 
 let room1 = {
     source: Config.streams.room1,
-	count: io.sockets.adapter.rooms['room1'] ? io.sockets.adapter.rooms['room1'].length : 0;
+	count: io.sockets.adapter.rooms['room1'] ? io.sockets.adapter.rooms['room1'].length : 0
 	}
 }, room2 = {
     source: Config.streams.room2,
-	count: io.sockets.adapter.rooms['room2'] ? io.sockets.adapter.rooms['room2'].length : 0;
+	count: io.sockets.adapter.rooms['room2'] ? io.sockets.adapter.rooms['room2'].length : 0
 	}
 };
 let getViewerCount = () => {
