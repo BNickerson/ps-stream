@@ -67,17 +67,17 @@ let room1 = {
 	}
 }
 let getViewerCount = () => {
-	return room1.count + room2.count;
+	return room1.count() + room2.count();
 }
 io.on('connection', (socket) => {
-    if (room1.count <= room2.count) {
+    if (room1.count() <= room2.count()) {
         socket.join('room1');
         socket.emit('source', room1.source);
-        console.log(`Room 1: ${room1.count} viewers`);
+        console.log(`Room 1: ${room1.count()} viewers`);
     } else {
         socket.join('room2');
         socket.emit('source', room2.source);
-        console.log(`Room 2: ${room2.count} viewers`);
+        console.log(`Room 2: ${room2.count()} viewers`);
     }
     io.sockets.emit('viewers', getViewerCount());
     socket.on('send-news', (message) => {
