@@ -72,7 +72,7 @@ io.on('connection', (socket) => {
         socket.emit('source', room2.source);
         console.log(`joining room 2 with ${r2count}`);
     }
-    io.sockets.emit('viewers', r1count+r2count);
+    io.sockets.emit('viewers', r1count+r2count+1);
     socket.on('send-news', (message) => {
         io.sockets.emit('news', (message));
     });
