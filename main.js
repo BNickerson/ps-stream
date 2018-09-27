@@ -85,7 +85,7 @@ io.on('connection', (socket) => {
     });
 	socket.on('disconnect', () => {
 		io.sockets.emit('viewers', getViewerCount());
-	}
+	});
 	
 });
 
