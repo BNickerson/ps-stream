@@ -55,10 +55,25 @@ app.post('/setup/title', (req, res) => {
 
 });
 
-let connectCounter = 0;
+let room1 = {
+    source: Config.streams.room1
+}, room2 = {
+    source: Config.streams.room2
+};
 io.on('connection', (socket) => {
-    connectCounter++;
-    io.sockets.emit('viewers', connectCounter);
+    let r1count = io.sockets.adapter.rooms['room1'] ? io.sockets.adapter.rooms['room1'].length : 0;
+    let r2count = io.sockets.adapter.rooms['room2'] ? io.sockets.adapter.rooms['room2'].length : 0;
+    if (r1count <= r2count) {
+        room1.count++;
+        socket.join('room1');
+        socket.emit('source', room1.source);
+        console.log('sharing room 1 source');
+    } else {
+        room2.count++;
+        socket.join('room2');
+        socket.emit('source', room2.source);
+        console.log('sharing room 2 source');
+    }
     socket.on('send-news', (message) => {
         io.sockets.emit('news', (message));
     });
@@ -66,17 +81,3 @@ io.on('connection', (socket) => {
 
 
 server.listen(Config.port, () => console.log(`Listening on port ${Config.port}`));
-
-
-// DISCORD CONNECTION
-
-// const Discord = require('discord.js');
-// let client = new Discord.Client();
-
-// client.on('ready', () => {
-//     console.log('Connected to Discord');
-//     io.sockets.emit('discord-connected');
-// });
-
-
-// client.login(Config.discord.token);
