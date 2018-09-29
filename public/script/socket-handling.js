@@ -1,4 +1,5 @@
 var socket = io(location.host);
+var connected = false;
 socket.on('news', function (data) {
     $('#socket-message').html(data.message);
     $('#alert-wrapper').fadeIn(1500).delay(data.delay ? data.delay : 5000).fadeOut(1500);
@@ -9,7 +10,11 @@ socket.on('viewers', function(viewerCount) {
 });
 
 socket.on('source', function(source) {
-    console.log(`connecting to ${source}`);
+    if (connected) {
+        console.log('reconnected to stream');
+        return;
+    }
+    console.log(`making initial connection to stream`);
     WowzaPlayer.create('playerElement',
         {
             "license":"PLAY1-3cMvd-Mf3tG-dBcHp-6zKn8-X9cTm",
@@ -25,6 +30,7 @@ socket.on('source', function(source) {
             "uiQuickRewindSeconds":"30"
         }
     );
+    connected = true;
 });
 
 socket.on('new-message', function(message) {
