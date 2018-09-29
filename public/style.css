@@ -3581,3 +3581,94 @@ ul.names li {
 	border-bottom-right-radius: 5px;
 	padding: 10px;
 }
+
+#chat-wrapper {
+	height: 412px;
+	width:100%;
+	background: #343434;
+	padding: 20px;
+	overflow-y: scroll;
+}
+#chat-wrapper ul li {
+	display:block;
+	width:100%;
+	color:#fff;
+	line-height:26px;
+	padding: 5px;
+	background-color: #4a4a4a;
+	margin: 3px 0;
+}
+#chat-wrapper::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+.username {
+	font-weight:bold;
+}
+
+.gold {
+	color:#ecc30c;
+}
+.platinum {
+	color:rgb(67, 247, 121);
+}
+.diamond {
+	color:rgb(78, 185, 247);
+}
+.moderator {
+	color:rgb(255, 35, 35);
+}
+.powerspike {
+	color:rgb(37, 37, 37);
+}
+#chat-wrapper ul li.bg-powerspike {
+	background-color:rgb(255, 255, 255);
+	color:rgb(37, 37, 37);
+}
+
+.background-gold {
+	background-image: url('./images/gold-icon.png');
+    height: 14px;
+    width: 14px;
+    margin-right: 3px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+
+}
+.background-platinum {
+	background-image: url('./images/platinum-icon.png');
+	height: 14px;
+    width: 14px;
+    margin-right: 3px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.background-diamond {
+	background-image: url('./images/diamond-icon.png');
+	height: 14px;
+    width: 14px;
+    margin-right: 3px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.background-moderator {
+	background-image: url('./images/moderator-icon.png');
+	height: 14px;
+    width: 14px;
+    margin-right: 3px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+.background-powerspike {
+	background-image: url('./images/blake-icon.png');
+	height: 14px;
+    width: 14px;
+    margin-right: 3px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+}

@@ -26,3 +26,9 @@ socket.on('source', function(source) {
         }
     );
 });
+
+socket.on('new-message', function(message) {
+    $('#chat-window ul').append('<li class="bg-' + message.role + '" data-id="' + message.id + '"><span class="background-' + message.role + '"></span><span class="username ' + message.role + '">' + message.author + ': </span><span class="message"></span></li>');
+    $('li[data-id='+ message.id + '] .message').text(message.content);
+    $('#chat-wrapper').animate({scrollTop: $('#chat-wrapper').height()});
+});

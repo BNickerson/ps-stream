@@ -83,11 +83,51 @@ io.on('connection', (socket) => {
     socket.on('send-news', (message) => {
         io.sockets.emit('news', (message));
     });
+
+    socket.on('send-message', () => {
+        let message = {
+            id: '12345',
+            author: 'Sledge',
+            content: '<h1>This is a test message from Blake!</h1><script>alert("test")<script>'
+        }
+        io.sockets.emit('new-message', message);
+    });
+
 	socket.on('disconnect', () => {
 		io.sockets.emit('viewers', getViewerCount());
 	});
-	
 });
 
-
 server.listen(Config.port, () => console.log(`Listening on port ${Config.port}`));
+
+const Discord = require('discord.js');
+const client = new Discord.Client();
+
+client.on('message', (object) => {
+    if (object.channel.id != '494328607012028425') return;
+
+    let supporterRole;
+    if (object.member.roles.find('name', 'Powerspike')) supporterRole = 'powerspike';
+    else if (object.member.roles.find('name', 'Control Crew')) supporterRole = 'moderator';
+    else if (object.member.roles.find('name', 'Diamond Supporter')) supporterRole = 'diamond';
+    else if (object.member.roles.find('name', 'Platinum Supporter')) supporterRole = 'platinum';
+    else if (object.member.roles.find('name', 'Gold Supporter')) supporterRole = 'gold';
+    else supporterRole = 'none';
+
+    let message = {
+        author: object.author.username,
+        content: object.content,
+        id: object.id,
+        role: supporterRole
+    };
+    io.sockets.emit('new-message', message);
+});
+
+let getRole = (roles) => {
+    console.log('finding roles');
+    roles.forEach((role, index) => {
+        
+    });
+};
+
+client.login(Config.discord.token);
