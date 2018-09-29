@@ -80,18 +80,6 @@ io.on('connection', (socket) => {
         console.log(`Room 2: ${room2.count()} viewers`);
     }
     io.sockets.emit('viewers', getViewerCount());
-    socket.on('send-news', (message) => {
-        io.sockets.emit('news', (message));
-    });
-
-    socket.on('send-message', () => {
-        let message = {
-            id: '12345',
-            author: 'Sledge',
-            content: '<h1>This is a test message from Blake!</h1><script>alert("test")<script>'
-        }
-        io.sockets.emit('new-message', message);
-    });
 
 	socket.on('disconnect', () => {
 		io.sockets.emit('viewers', getViewerCount());

@@ -32,7 +32,10 @@ socket.on('new-message', function(message) {
     if(!message.content) return;
     $('#chat-window ul').append('<li class="bg-' + message.role + '" data-id="' + message.id + '"><span class="background-' + message.role + '"></span><span class="username ' + message.role + '">' + message.author + ': </span><span class="message"></span></li>');
     $('li[data-id='+ message.id + '] .message').text(message.content);
-    $('#chat-wrapper').animate({scrollTop: $('#chat-wrapper').height()});
+    $('#chat-wrapper').animate({scrollTop: $('#chat-window').height()});
+    if($('#chat-window ul li').length > 50) {
+        $('#chat-window ul li')[0].remove();
+    }
 });
 
 socket.on('delete-message', function(messageId) {
