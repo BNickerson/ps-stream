@@ -46,5 +46,5 @@ socket.on('delete-message', function(messageId) {
 });
 
 socket.on('connected', function() {
-    $('#chat-window ul').append('<li class="bg-connected" data-id="connected"><span class="background-powerspike"></span><span class="username powerspike">Steely McBeam: </span><span class="message">Welcome to Powerspike.net! You\'ve connected to the chat.</span></li>');
+    $('#chat-window ul').append('<li class="bg-connected" data-id="connected"><span class="background-powerspike"></span><span class="username powerspike">Steely McBot: </span><span class="message">Welcome to Powerspike.net! You\'ve connected to the chat.</span></li>');
 });
