@@ -104,7 +104,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('message', (object) => {
-    if (object.channel.id != '494328607012028425') return;
+    if (object.channel.id != '494288862114218005') return;
 
     let supporterRole;
     if (object.member.roles.find('name', 'Powerspike')) supporterRole = 'powerspike';
