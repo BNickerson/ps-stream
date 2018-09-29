@@ -107,11 +107,11 @@ client.on('message', (object) => {
     if (object.channel.id != '494288862114218005') return;
 
     let supporterRole;
-    if (object.member.roles.find('name', 'Powerspike')) supporterRole = 'powerspike';
-    else if (object.member.roles.find('name', 'Control Crew')) supporterRole = 'moderator';
-    else if (object.member.roles.find('name', 'Diamond Supporter')) supporterRole = 'diamond';
-    else if (object.member.roles.find('name', 'Platinum Supporter')) supporterRole = 'platinum';
-    else if (object.member.roles.find('name', 'Gold Supporter')) supporterRole = 'gold';
+    if (object.member.roles.find(x => x.name == 'Powerspike')) supporterRole = 'powerspike';
+    else if (object.member.roles.find(x => x.name == 'Control Crew')) supporterRole = 'moderator';
+    else if (object.member.roles.find(x => x.name == 'Diamond Supporter')) supporterRole = 'diamond';
+    else if (object.member.roles.find(x => x.name == 'Platinum Supporter')) supporterRole = 'platinum';
+    else if (object.member.roles.find(x => x.name == 'Gold Supporter')) supporterRole = 'gold';
     else supporterRole = 'none';
 
     let message = {
