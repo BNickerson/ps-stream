@@ -93,7 +93,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 client.on('message', (object) => {
-    if (object.channel.id != '494288862114218005') return;
+    if (object.channel.id != '494288862114218005' && object.channel.id != '494328607012028425') return;
 
     let supporterRole;
     if (object.member.roles.find(x => x.name == 'Powerspike')) supporterRole = 'powerspike';
@@ -113,7 +113,7 @@ client.on('message', (object) => {
 });
 
 client.on('messageDelete', (object) => {
-    if (object.channel.id != '494288862114218005') return;
+    if (object.channel.id != '494288862114218005' && object.channel.id !=  '494328607012028425') return;
     io.sockets.emit('delete-message', object.id);
 });
 
