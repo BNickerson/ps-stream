@@ -123,11 +123,9 @@ client.on('message', (object) => {
     io.sockets.emit('new-message', message);
 });
 
-let getRole = (roles) => {
-    console.log('finding roles');
-    roles.forEach((role, index) => {
-        
-    });
-};
+client.on('messageDelete', (object) => {
+    if (object.channel.id != '494288862114218005') return;
+    io.sockets.emit('delete-message', object.id);
+});
 
 client.login(Config.discord.token);
