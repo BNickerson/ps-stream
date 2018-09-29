@@ -3594,9 +3594,10 @@ ul.names li {
 	width:100%;
 	color:#fff;
 	line-height:26px;
-	padding: 5px;
+	padding: 5px 8px;
 	background-color: #4a4a4a;
 	margin: 3px 0;
+	border-radius:5px;
 }
 #chat-wrapper::-webkit-scrollbar {
     width: 0px;
@@ -3621,7 +3622,8 @@ ul.names li {
 .powerspike {
 	color:rgb(37, 37, 37);
 }
-#chat-wrapper ul li.bg-powerspike {
+#chat-wrapper ul li.bg-powerspike,
+#chat-wrapper ul li.bg-connected {
 	background-color:rgb(255, 255, 255);
 	color:rgb(37, 37, 37);
 }

@@ -70,6 +70,7 @@ let getViewerCount = () => {
 	return room1.count() + room2.count();
 }
 io.on('connection', (socket) => {
+    socket.emit('connected');
     if (room1.count() <= room2.count()) {
         socket.join('room1');
         socket.emit('source', room1.source);

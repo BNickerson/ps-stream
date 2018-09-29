@@ -1,9 +1,5 @@
 var socket = io(location.host);
 var connected = false;
-socket.on('news', function (data) {
-    $('#socket-message').html(data.message);
-    $('#alert-wrapper').fadeIn(1500).delay(data.delay ? data.delay : 5000).fadeOut(1500);
-});
 
 socket.on('viewers', function(viewerCount) {
     $('#viewerCount').html(viewerCount + ' viewers');
@@ -36,8 +32,9 @@ socket.on('source', function(source) {
 socket.on('new-message', function(message) {
     message.content = message.content.replace(/\<(.*?)\>/, '');
     if(!message.content) return;
-    $('#chat-window ul').append('<li class="bg-' + message.role + '" data-id="' + message.id + '"><span class="background-' + message.role + '"></span><span class="username ' + message.role + '">' + message.author + ': </span><span class="message"></span></li>');
+    $('#chat-window ul').append('<li style="display:none" class="bg-' + message.role + '" data-id="' + message.id + '"><span class="background-' + message.role + '"></span><span class="username ' + message.role + '">' + message.author + ': </span><span class="message"></span></li>');
     $('li[data-id='+ message.id + '] .message').text(message.content);
+    $('li[data-id='+ message.id + ']').fadeIn();
     $('#chat-wrapper').animate({scrollTop: $('#chat-window').height()});
     if($('#chat-window ul li').length > 50) {
         $('#chat-window ul li')[0].remove();
@@ -46,4 +43,8 @@ socket.on('new-message', function(message) {
 
 socket.on('delete-message', function(messageId) {
     $('[data-id="'+ messageId + '"]').remove();
+});
+
+socket.on('connected', function() {
+    $('#chat-window ul').append('<li class="bg-connected" data-id="connected"><span class="background-powerspike"></span><span class="username powerspike">Steely McBeam: </span><span class="message">Welcome to Powerspike.net! You\'ve connected to the chat.</span></li>');
 });
