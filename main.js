@@ -123,13 +123,17 @@ client.on('message', (object) => {
     if (object.channel.id != '494288862114218005' && object.channel.id != '494328607012028425') return;
 
     let supporterRole;
-    if (object.member.roles.find(x => x.name == 'Powerspike')) supporterRole = 'powerspike';
-    else if (object.member.roles.find(x => x.name == 'Control Crew')) supporterRole = 'moderator';
-    else if (object.member.roles.find(x => x.name == 'Diamond Supporter')) supporterRole = 'diamond';
-    else if (object.member.roles.find(x => x.name == 'Platinum Supporter')) supporterRole = 'platinum';
-    else if (object.member.roles.find(x => x.name == 'Gold Supporter')) supporterRole = 'gold';
-    else supporterRole = 'none';
-
+    if(object.member.roles) {
+        if (object.member.roles.find(x => x.name == 'Powerspike')) supporterRole = 'powerspike';
+        else if (object.member.roles.find(x => x.name == 'Control Crew')) supporterRole = 'moderator';
+        else if (object.member.roles.find(x => x.name == 'Diamond Supporter')) supporterRole = 'diamond';
+        else if (object.member.roles.find(x => x.name == 'Platinum Supporter')) supporterRole = 'platinum';
+        else if (object.member.roles.find(x => x.name == 'Gold Supporter')) supporterRole = 'gold';
+        else supporterRole = 'none';
+    } else {
+        supporterRole = 'none';
+    }
+    
     let message = {
         author: object.author.username,
         content: object.content,
