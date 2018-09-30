@@ -24,7 +24,8 @@ socket.on('source', function(source) {
             "loop":false,
             "audioOnly":false,
             "uiShowQuickRewind":true,
-            "uiQuickRewindSeconds":"30"
+            "uiQuickRewindSeconds":"30",
+            "debugLevel": "OFF"
         }
     );
     connected = true;
