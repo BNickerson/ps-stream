@@ -1,93 +1,120 @@
-const Config = require('./private/config.json');
-const path = require('path');
-
+const config = require('./private/config.json');
 const express = require('express');
 const app = express();
 const server = require('http').Server(app);
-const bodyParser = require('body-parser');
 const io = require('socket.io')(server);
-const fs = require('fs');
+const bodyParser = require('body-parser');
+const passportSetup = require('./config/passport-setup');
+const DiscordBot = require('discord.js');
 
+const path = require('path');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('./public'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-app.get('/', (req, res) => {
-    res.render('index', {
-        title: 'Powerspike.net | Steelers Streams',
-        streamTitle: JSON.parse(fs.readFileSync('./data.json')).title
+const cookieSession = require('cookie-session');
+app.use(cookieSession({
+    maxAge:24*60*60*1000,
+    keys: [config.session.cookieKey]
+}));
+
+const passport = require('passport');
+app.use(passport.initialize());
+app.use(passport.session());
+
+/****** DB CONNECTION ******/
+const mongoose = require('mongoose');
+mongoose.connect(config.mongodb, () => {
+    console.log('Connected to MongoDB');
+});
+
+/****** APPLICATION ROUTES *******/
+const authRoutes = require('./routes/auth-routes');
+const setupRoutes = require('./routes/setup-routes');
+const profileRoutes = require('./routes/profile-routes');
+const baseRoutes = require('./routes/base-routes');
+const streamRoutes = require('./routes/stream-routes');
+
+app.use('/auth', authRoutes);
+app.use('/setup', setupRoutes);
+app.use('/profile', profileRoutes);
+app.use('/streams', streamRoutes);
+app.use('/', baseRoutes);
+
+/***** STREAM ROOM SETUP ******/
+const Stream = require('./models/stream-model');
+let streamRooms = [];
+
+const updateStreamRooms = () => {
+    Stream.find().then((streams) => {
+        streams.forEach((stream, index) => {
+            let obj = {
+                room: index,
+                source: stream.link,
+                getCount: function() {
+                    return io.sockets.adapter.rooms[this.room] ? io.sockets.adapter.rooms[this.room].length : 0;
+                }
+            };
+            let findSource = streamRooms.find(x => {
+                return x.source == obj.source;
+            });
+            if (!findSource) streamRooms.push(obj);
+        });
+    });
+};
+
+//get initial streams and go and update the stream rooms every minute
+updateStreamRooms();
+setInterval(() => {
+    updateStreamRooms();
+}, 60000);
+
+const getViewerCount = () => {
+    let total = 0;
+    streamRooms.forEach((room, index) => {
+        total += room.getCount();
+    });
+	return total;
+};
+
+io.on('connection', (socket) => {
+    if(streamRooms.length < 1) {
+        console.log('Loaded website without stream rooms loaded.');
+        return;
+    }
+    
+    let streamToConnect;
+    if (streamRooms.length <= 1) {
+        streamToConnect = streamRooms[0];
+    } else {
+        streamToConnect = streamRooms[0] ? streamRooms[0] : 999999;
+        streamRooms.forEach((room, index) => {
+            if(streamToConnect.getCount() > room.getCount() || room.getCount() == 0) streamToConnect = room;
+        });
+    }
+    
+    socket.join(streamToConnect.room);
+    socket.emit('source', streamToConnect.source);
+    socket.emit('connected');
+    io.sockets.emit('viewers', getViewerCount());
+
+    socket.on('check-rooms', () => {
+        streamRooms.forEach((stream, index) => {
+            console.log(`Room ${stream.room}: ${stream.getCount()} viewers`);
+        });
+    });
+    socket.on('update-stream-rooms', () => {
+        updateStreamRooms();
+    });
+	socket.on('disconnect', () => {
+		io.sockets.emit('viewers', getViewerCount());
     });
 });
 
-app.get('/setup/title/:key', (req, res) => {
-    let key = req.params.key;
-    if (key === Config.key) {
-        let data = JSON.parse(fs.readFileSync('./data.json'));
-        let title = data.title;
-        res.render('admin', {
-            title: title,
-            key: key
-        });
-    } else {
-        res.send('unauthorized');
-    }
-});
-app.post('/setup/title/:key', (req, res) => {
-    let key = req.params.key;
-    if (key === Config.key) {
-        let title = req.body.title;
-        let data = JSON.parse(fs.readFileSync('./data.json'));
-        data.title = title;
-        fs.writeFileSync('./data.json', JSON.stringify(data));
-        console.log(req.body.title);
-        res.render('admin', {
-            title: title,
-            key: key
-        });
-    } else {
-        res.send('unauthorized');
-    }
-});
+server.listen(config.port, () => console.log(`Listening on port ${config.port}`));
 
-app.post('/setup/title', (req, res) => {
-
-});
-
-let room1 = {
-    source: Config.streams.room1,
-	count: function() {
-		return io.sockets.adapter.rooms['room1'] ? io.sockets.adapter.rooms['room1'].length : 0
-	}
-}, room2 = {
-    source: Config.streams.room2,
-	count: function() {
-		return io.sockets.adapter.rooms['room2'] ? io.sockets.adapter.rooms['room2'].length : 0
-	}
-}
-let getViewerCount = () => {
-	return room1.count() + room2.count();
-}
-io.on('connection', (socket) => {
-    socket.emit('connected');
-    if (room1.count() <= room2.count()) {
-        socket.join('room1');
-        socket.emit('source', room1.source);
-        console.log(`Room 1: ${room1.count()} viewers`);
-    } else {
-        socket.join('room2');
-        socket.emit('source', room2.source);
-        console.log(`Room 2: ${room2.count()} viewers`);
-    }
-    io.sockets.emit('viewers', getViewerCount());
-
-	socket.on('disconnect', () => {
-		io.sockets.emit('viewers', getViewerCount());
-	});
-});
-
-server.listen(Config.port, () => console.log(`Listening on port ${Config.port}`));
 
 const Discord = require('discord.js');
 const client = new Discord.Client();
@@ -117,4 +144,4 @@ client.on('messageDelete', (object) => {
     io.sockets.emit('delete-message', object.id);
 });
 
-client.login(Config.discord.token);
+client.login(config.discord.token);

@@ -60,13 +60,25 @@ html(lang='en')
               nav.ec-navigation
                 ul
                   li
-                    a(href='https://www.patreon.com/powerspike_net' target='_blank') Support the Stream
+                    a(href='https://www.patreon.com/powerspike_net' target='_blank') Support the Website
+                  if username
+                    li
+                      a#profileLink(href='#') #{username}
+                  else
+                    li
+                      a(href='/auth/google') Login
               // // Responsive Menu //
               #as-menu.as-menuwrapper
                 button.as-trigger Open Menu
                 ul.as-menu
                   li
-                    a(href='https://www.patreon.com/powerspike_net' target='_blank') Support the Stream
+                    a(href='https://www.patreon.com/powerspike_net' target='_blank') Support the Website
+                  if username
+                    li
+                      a#profileLink(href='#') #{username}
+                  else
+                    li
+                      a(href='/auth/google') Login
         // // Main Header \\
         // // Main Header \\
         // // Main Content \\

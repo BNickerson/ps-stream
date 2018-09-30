@@ -11,9 +11,10 @@ socket.on('source', function(source) {
         return;
     }
     console.log(`making initial connection to stream`);
+    console.log(source);
     WowzaPlayer.create('playerElement',
         {
-            "license":"PLAY1-3cMvd-Mf3tG-dBcHp-6zKn8-X9cTm",
+            "license":"PLAY1-accfh-NkaWE-Vbkp6-9vGaG-YVCxm",
             "title":"",
             "description":"",
             "sourceURL":source,
@@ -47,4 +48,8 @@ socket.on('delete-message', function(messageId) {
 
 socket.on('connected', function() {
     $('#chat-window ul').append('<li class="bg-connected" data-id="connected"><span class="background-powerspike"></span><span class="username powerspike">Steely McBot: </span><span class="message">Welcome to Powerspike.net! You\'ve connected to the chat.</span></li>');
+});
+
+socket.on('no-streams', function() {
+    alert('No streams are registered on the website yet. Try refreshing the page.');
 });
