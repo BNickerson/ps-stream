@@ -26,7 +26,7 @@ app.use(passport.session());
 /****** DB CONNECTION ******/
 const mongoose = require('mongoose');
 mongoose.connect(config.mongodb, () => {
-    console.log('Connected to MongoDB');
+    console.log('Database Connection Success');
 });
 
 /****** APPLICATION ROUTES *******/
