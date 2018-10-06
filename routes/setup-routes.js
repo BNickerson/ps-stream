@@ -2,6 +2,7 @@ const router = require('express').Router();
 const fs = require('fs');
 const config = require('../private/config.json');
 const Configuration = require('../models/config-model');
+let io;
 
 router.get('/title/:key', async (req, res) => {
     let key = req.params.key;
@@ -42,4 +43,40 @@ router.post('/title/:key', async (req, res) => {
     }
 });
 
-module.exports = router;
+router.get('/donation/:now/:total/:key', async (req, res) => {
+    let key = req.params.key;
+    if (key === config.key) {
+        let now = req.params.now;
+        let total = req.params.total;
+        let existingDonationConfiguration = await Configuration.findOne({type:'donation'});
+        if(existingDonationConfiguration) {
+            await Configuration.replaceOne({type:'donation'}, {
+                type:'donation',
+                data:JSON.stringify({
+                    now:now,
+                    total:total
+                })
+            });
+        } else {
+            await new Configuration({
+                type:'donation',
+                data:JSON.stringify({
+                    now:now,
+                    total:total
+                })
+            }).save();
+        }
+        if(io) {
+            io.sockets.emit('donation', {now, total});
+        }
+        res.send(now + '/' + total);
+    } else {
+        res.send('unauthorized');
+    }
+});
+
+let injectIO = (sio) => {
+    io = sio;
+}
+
+module.exports = { router, injectIO };

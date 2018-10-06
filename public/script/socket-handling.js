@@ -58,3 +58,19 @@ socket.on('connected', function() {
 socket.on('no-streams', function() {
     alert('No streams are registered on the website yet. Try refreshing the page.');
 });
+
+socket.on('donation', function(data) {
+    console.log(data);
+    updateDonation(data.now, data.total);
+});
+
+var updateDonation = function(now, total) {
+    var percentage = now/total*100 > 100 ? 100 : now/total*100;
+    console.log(percentage);
+    $('#goalTag').html('$' + now + '/$' + total);
+    $('#goalProgress').css('width', percentage + '%');
+}
+
+$(document).ready(function() {
+    socket.emit('getDonation');
+});

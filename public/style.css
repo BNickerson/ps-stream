@@ -3706,3 +3706,16 @@ ul.names li {
 	background-color:#343434;
 	padding:10px 5px;
 }
+.goal-progress {
+	background-color:#343434;
+	padding:10px 10px;
+}
+.progress {
+	height:40px;
+	margin-bottom:0;
+}
+.progress-bar.progress-bar-big {
+	height:40px;
+	line-height: 40px;
+    font-size: 20px;
+}

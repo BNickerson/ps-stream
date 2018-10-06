@@ -2,6 +2,7 @@
 /***** STREAM ROOM SETUP ******/
 const Stream = require('./models/stream-model');
 const StreamRoom = require('./classes/Stream');
+const Configuration = require('./models/config-model');
 let io;
 let streamRooms = [];
 
@@ -48,6 +49,10 @@ const ioHandler = {
             socket.on('update-stream-rooms', () => {
                 updateStreamRooms();
             });
+            socket.on('getDonation', async () => {
+                let donationData = await getDonationInfo();
+                socket.emit('donation', donationData);
+            });
             socket.on('disconnect', () => {
                 io.sockets.emit('viewers', getViewerCount());
             });
@@ -61,6 +66,12 @@ const ioHandler = {
     
 }
 
+const getDonationInfo = async () => {
+    let donationConfiguration = await Configuration.findOne({ type: 'donation' });
+    let donationData = donationConfiguration ? JSON.parse(donationConfiguration.data) : { now:0,total:0 };
+    donationData.percentage = donationData.now/donationData.total;
+    return donationData;
+}
 const getViewerCount = () => {
     let total = 0;
     streamRooms.forEach((room, index) => {

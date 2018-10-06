@@ -32,12 +32,13 @@ mongoose.connect(config.mongodb, () => {
 /****** APPLICATION ROUTES *******/
 const authRoutes = require('./routes/auth-routes');
 const setupRoutes = require('./routes/setup-routes');
+setupRoutes.injectIO(io);
 const profileRoutes = require('./routes/profile-routes');
 const baseRoutes = require('./routes/base-routes');
 const streamRoutes = require('./routes/stream-routes');
 
 app.use('/auth', authRoutes);
-app.use('/setup', setupRoutes);
+app.use('/setup', setupRoutes.router);
 app.use('/profile', profileRoutes);
 app.use('/streams', streamRoutes);
 app.use('/', baseRoutes);
