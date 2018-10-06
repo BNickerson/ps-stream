@@ -8,22 +8,20 @@ router.get('/', (req, res) => {
     });
 });
 
-router.get('/new/:stream/:main/:key', (req, res) => {
+router.get('/new/:stream/:main/:key', async (req, res) => {
     let key = req.params.key;
     if (key === config.key) {
         let link = req.params.stream;
-        Stream.findOne({link:link}).then((existingStream) => {
-            if(existingStream) {
-                res.send('Stream already exists');
-            } else {
-                new Stream({
-                    link: link,
-                    mainServer: req.params.main
-                }).save().then((newStream) => {
-                    res.send(newStream);
-                });
-            }
-        });
+        let existingStream = await Stream.findOne({link:link});
+        if(existingStream) {
+            res.send('Stream already exists');
+        } else {
+            let newStream = await new Stream({
+                link: link,
+                mainServer: req.params.main
+            }).save();
+            res.send(newStream);
+        }
     } else {
         res.send('unauthorized');
     }

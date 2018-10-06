@@ -1,5 +1,6 @@
 var socket = io(location.host);
 var connected = false;
+var displayConnected = true;
 
 socket.on('viewers', function(viewerCount) {
     $('#viewerCount').html(viewerCount + ' viewers');
@@ -48,7 +49,10 @@ socket.on('delete-message', function(messageId) {
 });
 
 socket.on('connected', function() {
-    $('#chat-window ul').append('<li class="bg-connected" data-id="connected"><span class="background-powerspike"></span><span class="username powerspike">Steely McBot: </span><span class="message">Welcome to Powerspike.net! You\'ve connected to the chat.</span></li>');
+    if (displayConnected) {
+        $('#chat-window ul').append('<li class="bg-connected" data-id="connected"><span class="background-powerspike"></span><span class="username powerspike">Steely McBot: </span><span class="message">Welcome to Powerspike.net! You\'ve connected to the chat.</span></li>');
+        displayConnected = false;
+    }
 });
 
 socket.on('no-streams', function() {
