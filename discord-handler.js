@@ -38,6 +38,7 @@ const discordHandler = {
         
         client.login(config.discord.token).then(() => {
             console.log('Logged into Discord.');
+            client.user.setPresence({ game: { name:'Powerspike.net', type: 'WATCHING' }});
         });
     }
 }

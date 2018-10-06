@@ -2,13 +2,29 @@ let mongoose = require('mongoose');
 
 //Schema
 let userSchema = mongoose.Schema({
-    username: {
+    displayName: {
         type: String,
         require: true
     },
     googleId: {
         type: String,
         required: true
+    },
+    emails: {
+        type: Array,
+        require: false
+    },
+    name: {
+        type: Object
+    },
+    photos: {
+        type: Array
+    },
+    provider: {
+        type: String
+    },
+    gender: {
+        type: String
     }
 });
 

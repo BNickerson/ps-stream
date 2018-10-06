@@ -4,7 +4,7 @@ const Configuration = require('../models/config-model');
 
 router.get('/', async (req, res) => {
     try {
-        let username = req.user ? req.user.username : null;
+        let username = req.user ? (req.user.name.givenName ? req.user.name.givenName : req.user.displayName ) : null;
 
         let streamTitleConfig = await Configuration.findOne({ type: 'streamTitle'});
         let streamTitle = streamTitleConfig ? streamTitleConfig.data : 'No Stream Title';
