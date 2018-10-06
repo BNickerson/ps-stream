@@ -5,7 +5,6 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 const bodyParser = require('body-parser');
 const passportSetup = require('./config/passport-setup');
-const DiscordBot = require('discord.js');
 
 const path = require('path');
 app.use(bodyParser.urlencoded({ extended: false }));
