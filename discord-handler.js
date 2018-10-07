@@ -1,5 +1,6 @@
 const config = require('./private/config.json');
 const Discord = require('discord.js');
+const Patreon = require('./models/patreon-model');
 const client = new Discord.Client();
 let io;
 
@@ -34,6 +35,32 @@ const discordHandler = {
         client.on('messageDelete', (object) => {
             if (object.channel.id != '494288862114218005' && object.channel.id !=  '494328607012028425') return;
             io.sockets.emit('delete-message', object.id);
+        });
+
+        client.on('guildMemberUpdate', async (oldMember, newMember) => {
+            console.log('guildMemberUpdate');
+            if(oldMember.roles.has('493973939866042408') || oldMember.roles.has('493973848966823937') || oldMember.roles.has('493973592036474881')) return;
+
+            let patreon;
+            if(newMember.roles.has('493973939866042408')) {
+                patreon = await new Patreon({
+                    displayName:newMember.user.username,
+                    patreonLevel:'diamond'
+                }).save();
+            } else if(newMember.roles.has('493973848966823937')) {
+                patreon = await new Patreon({
+                    displayName:newMember.user.username,
+                    patreonLevel:'platinum'
+                }).save();
+            } else if(newMember.roles.has('493973592036474881')) {
+                patreon = await new Patreon({
+                    displayName:newMember.user.username,
+                    patreonLevel:'gold'
+                }).save();
+            }
+            if(io) {
+                io.sockets.emit('add-patreon', patreon);
+            }
         });
         
         client.login(config.discord.token).then(() => {
