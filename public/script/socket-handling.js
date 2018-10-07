@@ -60,8 +60,17 @@ socket.on('no-streams', function() {
 });
 
 socket.on('donation', function(data) {
-    console.log(data);
     updateDonation(data.now, data.total);
+});
+
+socket.on('add-patreons', function(patreons) {
+    $.each(patreons, function (index, patreon) {
+        addPatreon(patreon);
+    });
+});
+
+socket.on('add-patreon', function(patreon) {
+    addPatreon(patreon);
 });
 
 var updateDonation = function(now, total) {
@@ -84,6 +93,13 @@ var updateDonation = function(now, total) {
     $('#goalProgress').css('width', percentage + '%');
 }
 
+var addPatreon = function(patreon) {
+    let html = '<div data-id="' + patreon._id + '" style="display:none;" class="badge badge-pill badge-' + patreon.patreonLevel + '">' + patreon.displayName + '</div>';
+    $('#patreonList').append(html);
+    $('[data-id=' + patreon._id + ']').fadeIn();
+}
+
 $(document).ready(function() {
     socket.emit('getDonation');
+    socket.emit('getPatreons');
 });

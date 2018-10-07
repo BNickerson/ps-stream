@@ -2,6 +2,7 @@ const router = require('express').Router();
 const fs = require('fs');
 const config = require('../private/config.json');
 const Configuration = require('../models/config-model');
+const Patreon = require('../models/patreon-model');
 let io;
 
 router.get('/title/:key', async (req, res) => {
@@ -70,6 +71,24 @@ router.get('/donation/:now/:total/:key', async (req, res) => {
             io.sockets.emit('donation', {now, total});
         }
         res.send(now + '/' + total);
+    } else {
+        res.send('unauthorized');
+    }
+});
+
+router.get('/patreons/new/:name/:level/:key', async (req, res) => {
+    let key = req.params.key;
+    if (key === config.key) {
+        let name = req.params.name;
+        let level = req.params.level;
+        let patreon = await new Patreon({
+            displayName:name,
+            patreonLevel:level
+        }).save();
+        if(io) {
+            io.sockets.emit('add-patreon', patreon);
+        }
+        res.send(patreon);
     } else {
         res.send('unauthorized');
     }

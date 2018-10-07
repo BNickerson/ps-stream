@@ -3,26 +3,15 @@
 const Stream = require('./models/stream-model');
 const StreamRoom = require('./classes/Stream');
 const Configuration = require('./models/config-model');
+const Patreon = require('./models/patreon-model');
 let io;
 let streamRooms = [];
 
 const ioHandler = {
-    updateStreamRooms: () => {
-        Stream.find().then((streams) => {
-            streams.forEach((stream, index) => {
-                let obj = new StreamRoom(index, stream.link, io);
-                let findSource = streamRooms.find(x => {
-                    return x.source == obj.source;
-                });
-                if (!findSource) streamRooms.push(obj);
-            });
-        });
-    },
     start: (sio) => {
         io = sio;
         io.on('connection', (socket) => {
             if(streamRooms.length < 1) {
-                console.log('Loaded website without stream rooms loaded.');
                 return;
             }
             
@@ -53,6 +42,10 @@ const ioHandler = {
                 let donationData = await getDonationInfo();
                 socket.emit('donation', donationData);
             });
+            socket.on('getPatreons', async () => {
+                let patreons = await getPatreons();
+                socket.emit('add-patreons', patreons);
+            });
             socket.on('disconnect', () => {
                 io.sockets.emit('viewers', getViewerCount());
             });
@@ -66,6 +59,10 @@ const ioHandler = {
     
 }
 
+const getPatreons = async () => {
+    let patreons = await Patreon.find();
+    return patreons;
+}
 const getDonationInfo = async () => {
     let donationConfiguration = await Configuration.findOne({ type: 'donation' });
     let donationData = donationConfiguration ? JSON.parse(donationConfiguration.data) : { now:0,total:0 };
@@ -79,7 +76,6 @@ const getViewerCount = () => {
     });
     return total;
 }
-
 const updateStreamRooms = () => {
     Stream.find().then((streams) => {
         streams.forEach((stream, index) => {
