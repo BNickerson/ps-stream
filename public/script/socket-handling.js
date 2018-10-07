@@ -66,6 +66,19 @@ socket.on('donation', function(data) {
 
 var updateDonation = function(now, total) {
     var percentage = now/total*100 > 100 ? 100 : now/total*100;
+    $('#goalProgress').removeClass();
+    $('#goalProgress').addClass('progress-bar progress-bar-striped progress-bar-big');
+    if (percentage < 25) {
+        $('#goalProgress').addClass('bg-danger');
+    } else if (percentage >= 25 && percentage < 50) {
+        $('#goalProgress').addClass('bg-warning');
+    } else if (percentage >= 50 && percentage < 75) {
+        $('#goalProgress').addClass('bg-info');
+    } else if (percentage >= 75 && percentage < 100) {
+        $('#goalProgress').addClass('bg-success');
+    } else {
+        $('#goalProgress').addClass('bg-gold active');
+    }
     console.log(percentage);
     $('#goalTag').html('$' + now + '/$' + total);
     $('#goalProgress').css('width', percentage + '%');
