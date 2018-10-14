@@ -3610,7 +3610,7 @@ ul.names li {
 	font-weight:bold;
 }
 
-.gold {
+/* .gold {
 	color:#ecc30c;
 }
 .platinum {
@@ -3618,7 +3618,7 @@ ul.names li {
 }
 .diamond {
 	color:rgb(78, 185, 247);
-}
+} */
 .moderator {
 	color:rgb(255, 71, 71);
 }
@@ -3629,6 +3629,16 @@ ul.names li {
 #chat-wrapper ul li.bg-connected {
 	background-color:rgb(255, 255, 255);
 	color:rgb(37, 37, 37);
+}
+
+#chat-wrapper ul li.bg-gold {
+	background-color:rgb(224, 186, 15, 0.4)
+}
+#chat-wrapper ul li.bg-platinum {
+	background-color:rgb(41, 212, 92, 0.4);
+}
+#chat-wrapper ul li.bg-diamond {
+	background-color:rgb(39, 159, 230, 0.4);
 }
 
 .background-gold {

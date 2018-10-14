@@ -33,7 +33,7 @@ socket.on('source', function(source) {
 });
 
 socket.on('new-message', function(message) {
-    message.content = message.content.replace(/\<(.*?)\>/, '');
+    message.content = message.content.replace(/\<(.*?)\>/g, '');
     if(!message.content) return;
     $('#chat-window ul').append('<li style="display:none" class="bg-' + message.role + '" data-id="' + message.id + '"><span class="background-' + message.role + '"></span><span class="username ' + message.role + '">' + message.author + ': </span><span class="message"></span></li>');
     $('li[data-id='+ message.id + '] .message').text(message.content);
