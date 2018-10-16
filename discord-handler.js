@@ -8,6 +8,15 @@ const discordHandler = {
     start: (socketServer) => {
         io = socketServer;
 
+        client.on('ready', async () => {
+            const radioChannel = client.channels.get('501885582021099521');
+            let connection = await radioChannel.join();
+            console.log('joined radio channel');
+            const broadcast = client.createVoiceBroadcast();
+            broadcast.playStream('https://wowzaprod7-lh.akamaihd.net/i/3035dfef_1@541374/master.m3u8', {seek:0, volume:1})
+            const dispatcher = connection.playBroadcast(broadcast);
+        });
+
         client.on('message', (object) => {
             if (object.channel.id != '494288862114218005' && object.channel.id != '494328607012028425') return;
         
