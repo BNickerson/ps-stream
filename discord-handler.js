@@ -15,7 +15,10 @@ const discordHandler = {
             let dispatcher = connection.playStream('https://wowzaprod7-lh.akamaihd.net/i/3035dfef_1@541374/master.m3u8', {seek:0, volume:1, passes:2});
             
             dispatcher.on('end', (message) => {
+                let loggingChannel = client.channels.find(channel => channel.id = '501998531733618718');
+                loggingChannel.send(message);
                 console.log(message);
+                dispatcher = null;
                 dispatcher = connection.playStream('https://wowzaprod7-lh.akamaihd.net/i/3035dfef_1@541374/master.m3u8', {seek:0, volume:1, passes:2});
             });
         });
