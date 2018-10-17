@@ -11,9 +11,7 @@ const discordHandler = {
         client.on('ready', async () => {
             const radioChannel = client.channels.find(channel => channel.id == '501885582021099521');
             let connection = await radioChannel.join();
-            const broadcast = client.createVoiceBroadcast();
-            broadcast.playStream('https://wowzaprod7-lh.akamaihd.net/i/3035dfef_1@541374/master.m3u8', {seek:0, volume:1})
-            connection.playBroadcast(broadcast);
+            connection.playStream('https://wowzaprod7-lh.akamaihd.net/i/3035dfef_1@541374/master.m3u8', {seek:0, volume:1});
         });
 
         client.on('message', (object) => {
