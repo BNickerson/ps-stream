@@ -12,10 +12,11 @@ const discordHandler = {
             const radioChannel = client.channels.find(channel => channel.id == '501885582021099521');
             let connection = await radioChannel.join();
             //const broadcast = client.createVoiceBroadcast();
-            const dispatcher = connection.playStream('https://wowzaprod7-lh.akamaihd.net/i/3035dfef_1@541374/master.m3u8', {seek:0, volume:1, passes:2});
+            let dispatcher = connection.playStream('https://wowzaprod7-lh.akamaihd.net/i/3035dfef_1@541374/master.m3u8', {seek:0, volume:1, passes:2});
             
             dispatcher.on('end', (message) => {
                 console.log(message);
+                dispatcher = connection.playStream('https://wowzaprod7-lh.akamaihd.net/i/3035dfef_1@541374/master.m3u8', {seek:0, volume:1, passes:2});
             });
         });
 
