@@ -15,13 +15,11 @@ const discordHandler = {
             const radioChannel = client.channels.find(channel => channel.id == '501885582021099521');
             let connection = await radioChannel.join();
             //const broadcast = client.createVoiceBroadcast();
-            let dispatcher = connection.playStream('https://wowzaprod7-lh.akamaihd.net/i/3035dfef_1@541374/master.m3u8', {seek:0, volume:1, passes:2});
+            let dispatcher = connection.playStream('http://149.28.124.139:1935/Powerspike/SteelerNation.stream/playlist.m3u8', {seek:0, volume:1, passes:2});
             
             dispatcher.on('end', (message) => {
                 loggingChannel.send(message);
                 console.log(message);
-                dispatcher = null;
-                dispatcher = connection.playStream('https://wowzaprod7-lh.akamaihd.net/i/3035dfef_1@541374/master.m3u8', {seek:0, volume:1, passes:2});
             });
         });
 
