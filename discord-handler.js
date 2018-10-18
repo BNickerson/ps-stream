@@ -1,27 +1,13 @@
 const config = require('./private/config.json');
 const Discord = require('discord.js');
 const Patreon = require('./models/patreon-model');
+//const DiscordUser = require('./models/discordUser-model');
 const client = new Discord.Client();
 let io;
 
 const discordHandler = {
     start: (socketServer) => {
         io = socketServer;
-
-        client.on('ready', async () => {
-            let loggingChannel = client.channels.find(channel => channel.id = '501998531733618718');
-            loggingChannel.send('Radio started.');
-
-            const radioChannel = client.channels.find(channel => channel.id == '501885582021099521');
-            let connection = await radioChannel.join();
-            //const broadcast = client.createVoiceBroadcast();
-            let dispatcher = connection.playStream('http://149.28.124.139:1935/Powerspike/SteelerNation.stream/playlist.m3u8', {seek:0, volume:1, passes:2});
-            
-            dispatcher.on('end', (message) => {
-                loggingChannel.send(message);
-                console.log(message);
-            });
-        });
 
         client.on('message', (object) => {
             if (object.channel.id != '494288862114218005' && object.channel.id != '494328607012028425') return;
@@ -53,7 +39,6 @@ const discordHandler = {
         });
 
         client.on('guildMemberUpdate', async (oldMember, newMember) => {
-            console.log('guildMemberUpdate');
             if(oldMember.roles.has('493973939866042408') || oldMember.roles.has('493973848966823937') || oldMember.roles.has('493973592036474881')) return;
 
             let patreon;
@@ -73,10 +58,86 @@ const discordHandler = {
                     patreonLevel:'gold'
                 }).save();
             }
-            if(io) {
+            if(io && patreon) {
                 io.sockets.emit('add-patreon', patreon);
             }
         });
+
+        // client.on('messageReactionAdd', async (reaction, user) => {
+        //     if ((reaction.emoji.name != 'upvote' && reaction.emoji.name != 'downvote')) return;
+
+        //     if(reaction.emoji.name == 'upvote') {
+        //         let existingUser = await DiscordUser.findOne({userId: reaction.message.author.id});
+        //         if(existingUser) {
+        //             await reaction.message.member.setNickname(`${reaction.message.member.user.username} (${existingUser.upvotes-existingUser.downvotes+1})`);
+        //             await DiscordUser.replaceOne({userId: user.id}, {
+        //                 userId:reaction.message.author.id,
+        //                 upvotes:existingUser.upvotes+1,
+        //                 downvotes:existingUser.downvotes
+        //             });
+        //         } else {
+        //             await new DiscordUser({
+        //                 userId:reaction.message.author.id,
+        //                 upvotes:1,
+        //                 downvotes:0
+        //             }).save();
+        //         }
+        //     } else if(reaction.emoji.name == 'downvote') {
+        //         let existingUser = await DiscordUser.findOne({userId: reaction.message.author.id});
+        //         if(existingUser) {
+        //             await reaction.message.member.setNickname(`${reaction.message.member.user.username} (${existingUser.upvotes-existingUser.downvotes-1})`);
+        //             await DiscordUser.replaceOne({userId: reaction.message.author.id}, {
+        //                 userId:reaction.message.author.id,
+        //                 upvotes:existingUser.upvotes,
+        //                 downvotes:existingUser.downvotes+1
+        //             });
+        //         } else {
+        //             await new DiscordUser({
+        //                 userId:user.id,
+        //                 upvotes:0,
+        //                 downvotes:1
+        //             }).save();
+        //         }
+        //     }
+        // });
+
+        // client.on('messageReactionRemove', async (reaction, user) => {
+        //     if ((reaction.emoji.name != 'upvote' && reaction.emoji.name != 'downvote')) return;
+
+        //     if(reaction.emoji.name == 'upvote') {
+        //         let existingUser = await DiscordUser.findOne({userId: reaction.message.author.id});
+        //         if(existingUser) {
+        //             await reaction.message.member.setNickname(`${reaction.message.member.user.username} (${existingUser.upvotes-existingUser.downvotes-1})`);
+        //             await DiscordUser.replaceOne({userId: user.id}, {
+        //                 userId:reaction.message.author.id,
+        //                 upvotes:existingUser.upvotes-1,
+        //                 downvotes:existingUser.downvotes
+        //             });
+        //         } else {
+        //             await new DiscordUser({
+        //                 userId:reaction.message.author.id,
+        //                 upvotes:0,
+        //                 downvotes:0
+        //             }).save();
+        //         }
+        //     } else if(reaction.emoji.name == 'downvote') {
+        //         let existingUser = await DiscordUser.findOne({userId: reaction.message.author.id});
+        //         if(existingUser) {
+        //             await reaction.message.member.setNickname(`${reaction.message.member.user.username} (${existingUser.upvotes-existingUser.downvotes+1})`);
+        //             await DiscordUser.replaceOne({userId: user.id}, {
+        //                 userId:reaction.message.author.id,
+        //                 upvotes:existingUser.upvotes,
+        //                 downvotes:existingUser.downvotes-1
+        //             });
+        //         } else {
+        //             await new DiscordUser({
+        //                 userId:reaction.message.author.id,
+        //                 upvotes:0,
+        //                 downvotes:0
+        //             }).save();
+        //         }
+        //     }
+        // });
         
         client.login(config.discord.token).then(() => {
             console.log('Logged into Discord.');
