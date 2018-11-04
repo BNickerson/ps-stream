@@ -4,16 +4,18 @@ block content
     .ec-main-section
             .container
                 .row
-                    .col-lg-8
+                    #player.col-lg-8
                         .ec-fancy-title
                             h2 #{streamTitle} | 
                                 span#viewerCount
                         .ec-map
                             #playerElement(style='width:100%; height:0; padding:0 0 56.25% 0')
-                    .col-lg-4
+                    #chat.col-lg-4
                         .ec-fancy-title
                             h2 Discord Chat - 
-                                a(href="https://discord.gg/qAtPmuj" style="color:#e11b1b" target="_blank") Join
+                                a(href="https://discord.gg/qAtPmuj" style="color:#e11b1b" target="_blank") Join 
+                            h2#close-chat.align-right
+                                .fa.fa-times-circle
                         .ec-map
                             #chat-wrapper
                                 #chat-window

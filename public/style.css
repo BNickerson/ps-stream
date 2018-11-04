@@ -1263,7 +1263,7 @@ span.ec-blue-transparent {
 	color: #fff;
 	margin: 0px;
 	padding: 7px 15px 9px 15px;
-	float: left;
+	display:inline-block;
 }
 /* .ec-fancy-title span {
 	float: right;
@@ -3745,4 +3745,13 @@ ul.names li {
 }
 .bg-gold {
 	background-color:#e6d212;
+}
+.align-right {
+	float:right;
+}
+.fa.fa-times-circle {
+	cursor: pointer;
+}
+.hide {
+	display:none;
 }
