@@ -10,3 +10,7 @@ var closeChat = function() {
     $('#player').removeClass('col-lg-8').addClass('col-lg-12');
     $('#chat').addClass('hide');
 }
+
+jQuery(function() {
+    jQuery('#as-menu').asmenu();
+});
