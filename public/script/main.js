@@ -10,3 +10,5 @@ var closeChat = function() {
     $('#player').removeClass('col-lg-8').addClass('col-lg-12');
     $('#chat').addClass('hide');
 }
+
+$(".ec-loading-section").fadeOut("slow");
