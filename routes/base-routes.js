@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
 
         let streamTitleConfig = await Configuration.findOne({ type: 'streamTitle'});
         let streamTitle = streamTitleConfig ? streamTitleConfig.data : 'No Stream Title';
-        let donationLink = 'https://paypal.me/pools/c/8aIq7dFLdV';
+        let donationLink = 'https://paypal.me/pools/c/8aVbm0MgOa';
 
         res.render('index', {
             title: 'Powerspike.net | Steelers Streams',
